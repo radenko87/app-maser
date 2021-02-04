@@ -6,7 +6,7 @@ const session = require("express-session");
 const HALF_DAY = 1000 * 60 * 60 * 12;
 
 const {
-  PORT = 80,
+  PORT = 3000,
   NODE_ENV = "development",
   SESS_NAME = "sid",
   SESS_SECRET = "app",
