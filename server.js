@@ -9,7 +9,7 @@ const {
   PORT = 80,
   NODE_ENV = "development",
   SESS_NAME = "sid",
-  SESS_SECRET = "mojaapp",
+  SESS_SECRET = "app",
   SESS_LIFETIME = HALF_DAY,
 } = process.env;
 
