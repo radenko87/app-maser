@@ -11,11 +11,14 @@ const adminController = (req, res) => {
         let operateri = users.filter((user) => user.role == "operater");
         let savetnici = users.filter((user) => user.role == "savetnik");
 
+       
+
         res.render("admin/adminDashboard", {
           name: user.first_name,
           gradovi: gradovi,
           proizvodi: proizvodi,
           operateri: operateri,
+      
           savetnici: savetnici,
           brojusera: users.length,
           brojoperatera: operateri.length,

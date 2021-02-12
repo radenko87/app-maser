@@ -6,6 +6,7 @@ const operaterController = (req, res) => {
 
   db.gradovi.find({}, (err, gradovi) => {
     db.users.find({ role: "savetnik" }, (err, savetnici) => {
+      
       db.termini.find(
         { operater: user.first_name + " " + user.last_name },
         (err, termini) => {
@@ -14,12 +15,14 @@ const operaterController = (req, res) => {
             savetnici: savetnici,
             gradovi: gradovi,
             brojTermina: termini.length,
+        
             
           });
         }
       );
     });
   });
+
 };
 
 module.exports = operaterController;

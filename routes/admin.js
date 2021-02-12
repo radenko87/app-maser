@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 
+
 router.use(checkAdmin);
 
-router.get("/", require("../controllers/admin/adminController"));
+
 
 router.get("/create", (req, res) => {
   res.render("admin/adminCreateForm");
@@ -43,6 +44,10 @@ router.get(
   "/savetnik/termini/:name",
   require("../controllers/admin/savetnikTerminiController")
 );
+
+
+
+
 
 function checkAdmin(req, res, next) {
   let user = req.session.user;

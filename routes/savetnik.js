@@ -10,6 +10,12 @@ router.get(
   require("../controllers/savetnik/showTerminController")
 );
 
+//tabela router
+
+
+
+
+
 router.post(
   "/izvestaj/:id",
   require("../controllers/savetnik/izvestajController")

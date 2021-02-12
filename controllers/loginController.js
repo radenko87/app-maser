@@ -22,9 +22,14 @@ const loginController = (req, res) => {
             res.redirect("/admin");
           } else if (user.role == "operater") {
             res.redirect("/operater");
+
+          }else if (user.role == "test") {
+              res.redirect("/test");
+
           } else if (user.role == "savetnik") {
             res.redirect("/savetnik");
-          } else {
+          }
+           else {
             res.redirect("/");
           }
         } else {

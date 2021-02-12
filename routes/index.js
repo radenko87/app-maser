@@ -11,6 +11,8 @@ router.use("/operater", require("./operater"));
 
 router.use("/savetnik", require("./savetnik"));
 
+router.use("/test", require("./test"));
+
 router.use("/logout", require("./logout"));
 
 module.exports = router;
