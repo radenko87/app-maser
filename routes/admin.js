@@ -3,7 +3,7 @@ const router = express.Router();
 
 
 router.use(checkAdmin);
-
+router.get("/", require("../controllers/admin/adminController"));
 
 
 router.get("/create", (req, res) => {
