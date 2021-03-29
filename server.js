@@ -37,6 +37,7 @@ app.set("view engine", "ejs");
 
 app.use("/", routes);
 
-app.listen(80, function () {
+app.listen(80
+  , function () {
   console.log("Listening on port 80");
 });

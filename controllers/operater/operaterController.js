@@ -1,10 +1,11 @@
 const mongojs = require("mongojs");
-const db = mongojs("fullapp", ["users", "gradovi", "proizvodi"]);
+const db = mongojs("fullapp", ["users", "gradovi", "proizvodi","klasifikacija"]);
 
 const operaterController = (req, res) => {
   let user = req.session.user;
 
   db.gradovi.find({}, (err, gradovi) => {
+    db.klasifikacija.find({}, (err, klasifikacija) => {
     db.users.find({ role: "savetnik" }, (err, savetnici) => {
       
       db.termini.find(
@@ -14,10 +15,12 @@ const operaterController = (req, res) => {
             name: user.first_name,
             savetnici: savetnici,
             gradovi: gradovi,
+            klasifikacija: klasifikacija,
             brojTermina: termini.length,
         
             
           });
+        });
         }
       );
     });

@@ -109,6 +109,7 @@
                                 <a class="dropdown-item" href="/admin/create">Korisnika</a>
                                 <a class="dropdown-item" href="/admin/create/grad">Grad</a>
                                 <a class="dropdown-item" href="/admin/create/proizvod">Proizvod</a>
+                                <a class="dropdown-item" href="/admin/create/klasifikacija">Klasifikacija</a>
 
                             </div>
                         </li>
@@ -788,23 +789,23 @@
                         <!-- Card -->
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Distributivni centar</h4>
+                                <h4 class="card-title">Lokacija</h4>
                             </div>
                             <div class="comment-widgets scrollable">
                                 <!-- Comment Row -->
-                                <% for(let i=0;i<savetnici.length;i++) {%>
+                                <% for(let i=0;i<gradovi.length;i++) {%>
                                 <div class="d-flex flex-row comment-row m-t-0">
                                     <div class="comment-text w-100">
                                         <h6 class="font-medium">
-                                            <%= savetnici[i].first_name+" "+savetnici[i].last_name %></h6>
+                                            <%= gradovi[i].name+" " %></h6>
 
                                         <div class="comment-footer">
                                             
-                                            <a href="/admin/savetnik/termini/<%= savetnici[i].first_name+" "+savetnici[i].last_name %>"
+                                            <a href="/admin/savetnik/termini/<%= gradovi[i].name+" " %>"
                                                 type="button" class="btn btn-cyan btn-sm">Termini</a>
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm delete-user-btn"
-                                                data-id="<%= savetnici[i]._id %>">Delete</button>
+                                                data-id="<%= gradovi[i]._id %>">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -828,6 +829,29 @@
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm delete-gradovi-btn"
                                                 data-id="<%= gradovi[i]._id %>">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Nivo klasifikacije</h4>
+                            </div>
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                <% for(let i=0;i<klasifikacija.length;i++) {%>
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium"><%= klasifikacija[i].name+" " %></h6>
+
+                                        <div class="comment-footer">
+                                            
+                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                            <button type="button" class="btn btn-danger btn-sm delete-gradovi-btn"
+                                                data-id="<%= klasifikacija[i]._id %>">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1207,6 +1231,20 @@
             if (potvrda) {
                 $.ajax({
                     url: `/admin/delete/grad/${id}`
+                })
+                    .then(res => {
+                        if (res == "Ok") {
+                            window.location.href = "/admin";
+                        }
+                    })
+            }
+        })
+        $(".delete-gradovi-btn").on('click', function () {
+            let id = $(this).attr('data-id'); // 587587587658
+            let potvrda = confirm("Da li ste sigurni ?");
+            if (potvrda) {
+                $.ajax({
+                    url: `/admin/delete/klasifikacija/${id}`
                 })
                     .then(res => {
                         if (res == "Ok") {

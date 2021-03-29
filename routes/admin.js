@@ -13,6 +13,9 @@ router.get("/create", (req, res) => {
 router.get("/create/grad", (req, res) => {
   res.render("admin/createGrad");
 });
+router.get("/create/klasifikacija", (req, res) => {
+  res.render("admin/createKlasifikacija");
+});
 router.get("/create/proizvod", (req, res) => {
   res.render("admin/createProizvod");
 });
@@ -29,10 +32,15 @@ router.get(
   "/delete/grad/:gradId",
   require("../controllers/admin/deleteGradController")
 );
+router.get(
+  "/delete/klasifikacija/:klasifikacijaId",
+  require("../controllers/admin/deleteKlasifikacijaController")
+);
 
 router.post("/create/save", require("../controllers/admin/saveController"));
 
 router.post("/create/grad/save", require("../controllers/admin/createGrad"));
+router.post("/create/klasifikacija/save", require("../controllers/admin/createKlasifikacija"));
 
 router.post(
   "/create/proizvod/save",
