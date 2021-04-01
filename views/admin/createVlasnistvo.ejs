@@ -10,13 +10,10 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../../assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <title>Admin</title>
     <!-- Custom CSS -->
-    <link rel="stylesheet" type="text/css" href="../../assets/libs/select2/dist/css/select2.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/libs/jquery-minicolors/jquery.minicolors.css">
-    <link rel="stylesheet" type="text/css"
-        href="../../assets/libs/bootstrap-datepicker/dist/css/bootstrap-datepicker.min.css">
-    <link rel="stylesheet" type="text/css" href="../../assets/libs/quill/dist/quill.snow.css">
+    <link href="../../assets/libs/flot/css/float-chart.css" rel="stylesheet">
+    <!-- Custom CSS -->
     <link href="../../dist/css/style.min.css" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -101,11 +98,29 @@
                         <!-- ============================================================== -->
                         <!-- create new -->
                         <!-- ============================================================== -->
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="d-none d-md-block">Kreiraj <i class="fa fa-angle-down"></i></span>
+                                <span class="d-block d-md-none"><i class="fa fa-plus"></i></span>
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="/admin/create">Korisnika</a>
+                                <a class="dropdown-item" href="/admin/create/grad">Grad</a>
+                                <a class="dropdown-item" href="/admin/create/proizvod">Proizvod</a>
 
+                            </div>
+                        </li>
                         <!-- ============================================================== -->
                         <!-- Search -->
                         <!-- ============================================================== -->
-
+                        <li class="nav-item search-box"> <a class="nav-link waves-effect waves-dark"
+                                href="javascript:void(0)"><i class="ti-search"></i></a>
+                            <form class="app-search position-absolute">
+                                <input type="text" class="form-control" placeholder="Search &amp; enter"> <a
+                                    class="srh-btn"><i class="ti-close"></i></a>
+                            </form>
+                        </li>
                     </ul>
                     <!-- ============================================================== -->
                     <!-- Right side toggle and nav items -->
@@ -240,13 +255,8 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="/operater" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                href="/admin" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
-                        <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="charts.html" aria-expanded="false"><i class="mdi mdi-chart-bar"></i><span
-                                    class="hide-menu">Termini <span><%= brojTermina %></span></span></a></li>
-                    </ul>
-                    </li>
 
                     </ul>
                 </nav>
@@ -261,254 +271,71 @@
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
-            <form action="/operater/newTermin" method="post">
-                <!-- ============================================================== -->
-                <!-- Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <div class="page-breadcrumb">
-                    <div class="row">
-                        <div class="col-12 d-flex no-block align-items-center">
-                            <h4 class="page-title">Novi termin</h4>
-                            <div class="ml-auto text-right">
-                                <button type="submit" class="btn btn-primary">Submit</button>
-                            </div>
-                        </div>
+            <!-- ============================================================== -->
+            <!-- Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <div class="page-breadcrumb">
+                <div class="row">
+                    <div class="col-12 d-flex no-block align-items-center">
+                        <h4 class="page-title">Kreiraj novo mesto</h4>
+
                     </div>
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Bread crumb and right sidebar toggle -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- Container fluid  -->
-                <!-- ============================================================== -->
-                <div class="container-fluid">
-                    <!-- ============================================================== -->
-                    <!-- Start Page Content -->
-                    <!-- ============================================================== -->
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="card">
-
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Bread crumb and right sidebar toggle -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- Container fluid  -->
+            <!-- ============================================================== -->
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-6 offset-3">
+                        <div class="card">
+                            <form class="form-horizontal" action="/admin/create/vlasnistvo/save" method="POST">
                                 <div class="card-body">
-                                    <h4 class="card-title">Stranka info</h4>
+                                    <h4 class="card-title">Novi vlasnik imovine</h4>
                                     <div class="form-group row">
                                         <label for="fname" class="col-sm-3 text-right control-label col-form-label">Ime
-                                            stranke</label>
+                                            i prezime</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="ime_stranke" class="form-control" id="fname"
-                                                placeholder="ime stranke">
+                                            <input type="text" name="name" class="form-control" id="name"
+                                                placeholder="Novi vlasnik imovine">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="lname"
-                                            class="col-sm-3 text-right control-label col-form-label">Prezime
-                                            stranke</label>
+                                            class="col-sm-3 text-right control-label col-form-label">Uloga</label>
                                         <div class="col-sm-9">
-                                            <input type="text" name="prezime_stranke" class="form-control" id="lname"
-                                                placeholder="prezime stranke">
+                                            <input type="text" name="role" class="form-control" id="role"
+                                                placeholder="Uloga">
                                         </div>
                                     </div>
-                                    <div class="form-group row">
-                                        <label for="lname"
-                                            class="col-sm-3 text-right control-label col-form-label">Godiste
-                                            stranke</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="godiste_stranke" class="form-control" id="lname"
-                                                placeholder="godiste stranke">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="email1" class="col-sm-3 text-right control-label col-form-label">Ime
-                                            supruznika</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="ime_supruznika" class="form-control" id="email1"
-                                                placeholder="Ime supruznika">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1"
-                                            class="col-sm-3 text-right control-label col-form-label">Prezime
-                                            supruznika</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="prezime_supruznika" class="form-control" id="cono1"
-                                                placeholder="Prezime supruznika">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="cono1"
-                                            class="col-sm-3 text-right control-label col-form-label">Godiste
-                                            supruznika</label>
-                                        <div class="col-sm-9">
-                                            <input type="text" name="godiste_supruznika" class="form-control" id="cono1"
-                                                placeholder="Godiste supruznika">
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="">Telefon</label>
-                                        <input type="text" class="form-control" name="fiksni_telefon"
-                                            placeholder="Fiksni telefon">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="">Mobilni telefon</label>
-                                        <input type="text" class="form-control" name="mobilni_telefon"
-                                            placeholder="Mobilni telefon">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label for="">Adresa</label>
-                                        <input type="text" class="form-control" name="adresa" placeholder="adresa">
-                                    </div>
+
+
+
+
                                 </div>
                                 <div class="border-top">
                                     <div class="card-body">
-
+                                        <button type="submit" class="btn btn-primary">Kreiraj</button>
                                     </div>
                                 </div>
-                            </div>
-
-                        </div>
-                        <div class="col-md-6">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title m-b-0">Termin info</h5>
-                                    <div class="form-group m-t-20">
-                                        <label>Datum <small class="text-muted">dd/mm/yyyy</small></label>
-                                        <input type="text" class="form-control date-inputmask" id="date-mask"
-                                            placeholder="Datum termina" name="datum_zakazivanja">
-                                    </div>
-                                    <div class="form-group m-t-20">
-                                        <label>Vreme <small class="text-muted">sat/minut/am-pm</small></label>
-                                        <input type="time" class="form-control date-inputmask" id="date-mask"
-                                            name="vreme_termina">
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-md-3 m-t-15">Savetnik</label>
-                                        <div class="col-md-9">
-                                            <select name="savetnik" class="form-control">
-                                                <% for(let i=0;i<savetnici.length;i++) { %>
-                                                <option
-                                                    value="<%= savetnici[i].first_name+" "+savetnici[i].last_name %>">
-                                                    <%= savetnici[i].first_name+" "+savetnici[i].last_name %></option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 m-t-15">Nivo klasifikacije</label>
-                                        <div class="col-md-9">
-                                            <select name="klasifikacija" class="form-control">
-                                                <% for(let i=0;i<klasifikacija.length;i++) { %>
-                                                <option value="<%= klasifikacija[i].name %>"><%= klasifikacija[i].name %></option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 m-t-15">Resurs</label>
-                                        <div class="col-md-9">
-                                            <select name="proizvodi" class="form-control">
-                                                <% for(let i=0;i<proizvodi.length;i++) { %>
-                                                <option value="<%= proizvodi[i].name %>"><%= proizvodi[i].name %></option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 m-t-15">Vlasnistvo nad imovinom</label>
-                                        <div class="col-md-9">
-                                            <select name="vlasnistvo" class="form-control">
-                                                <% for(let i=0;i<vlasnistvo.length;i++) { %>
-                                                <option value="<%= vlasnistvo[i].name %>"><%= vlasnistvo[i].name %></option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                 
-
-
-                                    <div class="form-group row">
-                                        <label class="col-md-3 m-t-15">Lokacija imovine</label>
-                                        <div class="col-md-9">
-                                            <select name="grad" class="form-control">
-                                                <% for(let i=0;i<gradovi.length;i++) { %>
-                                                <option value="<%= gradovi[i].name %>"><%= gradovi[i].name %></option>
-                                                <% } %>
-                                            </select>
-                                        </div>
-                                        
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="card">
-                                <div class="card-body">
-                                    <h5 class="card-title">Dodatno</h5>
-                                    <div class="row mb-3 align-items-center">
-                                        <div class="col-lg-3 col-md-12 text-right">
-                                            <span>Deca</span>
-                                        </div>
-                                        <div class="col-lg-9 col-md-12">
-                                            <input type="text" class="form-control" placeholder="Imena dece"
-                                                name="deca">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 align-items-center">
-                                        <div class="col-lg-3 col-md-12 text-right">
-                                            <span>Operacije</span>
-                                        </div>
-                                        <div class="col-lg-9 col-md-12">
-                                            <input type="text" class="form-control" placeholder="Operacije"
-                                                name="operacije">
-                                        </div>
-                                    </div>
-                                    <div class="row mb-3 align-items-center">
-                                        <div class="col-lg-3 col-md-12 text-right">
-                                            <span>Terapija</span>
-                                        </div>
-                                        <div class="col-lg-9 col-md-12">
-                                            <input type="text" class="form-control" placeholder="Terapija"
-                                                name="terapija">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
+                            </form>
                         </div>
                     </div>
-                    <!-- editor -->
-                    <div class="row">
-                        <div class="col-12">
-                            <div class="card">
-                                <h4 class="card-title">Napomena</h4>
-                                <input type="text" class="form-control" name="napomena">
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- ============================================================== -->
-                    <!-- End PAge Content -->
-                    <!-- ============================================================== -->
-                    <!-- ============================================================== -->
-                    <!-- Right sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- .right-sidebar -->
-                    <!-- ============================================================== -->
-                    <!-- End Right sidebar -->
-                    <!-- ============================================================== -->
                 </div>
-                <!-- ============================================================== -->
-                <!-- End Container fluid  -->
-                <!-- ============================================================== -->
-                <!-- ============================================================== -->
-                <!-- footer -->
-                <!-- ============================================================== -->
-                <footer class="footer text-center">
-                    All Rights Reserved by Matrix-admin. Designed and Developed by <a
-                        href="https://wrappixel.com">WrapPixel</a>.
-                </footer>
-            </form>
+            </div>
+            <!-- ============================================================== -->
+            <!-- End Container fluid  -->
+            <!-- ============================================================== -->
+            <!-- ============================================================== -->
+            <!-- footer -->
+            <!-- ============================================================== -->
+            <footer class="footer text-center">
+                All Rights Reserved by Matrix-admin. Designed and Developed by <a
+                    href="https://wrappixel.com">WrapPixel</a>.
+            </footer>
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->
@@ -527,7 +354,6 @@
     <!-- Bootstrap tether Core JavaScript -->
     <script src="../../assets/libs/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- slimscrollbar scrollbar JavaScript -->
     <script src="../../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
     <script src="../../assets/extra-libs/sparkline/sparkline.js"></script>
     <!--Wave Effects -->
@@ -536,60 +362,18 @@
     <script src="../../dist/js/sidebarmenu.js"></script>
     <!--Custom JavaScript -->
     <script src="../../dist/js/custom.min.js"></script>
-    <!-- This Page JS -->
-    <script src="../../assets/libs/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
-    <script src="../../dist/js/pages/mask/mask.init.js"></script>
-    <script src="../../assets/libs/select2/dist/js/select2.full.min.js"></script>
-    <script src="../../assets/libs/select2/dist/js/select2.min.js"></script>
-    <script src="../../assets/libs/jquery-asColor/dist/jquery-asColor.min.js"></script>
-    <script src="../../assets/libs/jquery-asGradient/dist/jquery-asGradient.js"></script>
-    <script src="../../assets/libs/jquery-asColorPicker/dist/jquery-asColorPicker.min.js"></script>
-    <script src="../../assets/libs/jquery-minicolors/jquery.minicolors.min.js"></script>
-    <script src="../../assets/libs/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
-    <script src="../../assets/libs/quill/dist/quill.min.js"></script>
-    <script>
-        //***********************************//
-        // For select 2
-        //***********************************//
-        $(".select2").select2();
+    <!--This page JavaScript -->
+    <!-- <script src="../../dist/js/pages/dashboards/dashboard1.js"></script> -->
+    <!-- Charts js Files -->
+    <script src="../../assets/libs/flot/excanvas.js"></script>
+    <script src="../../assets/libs/flot/jquery.flot.js"></script>
+    <script src="../../assets/libs/flot/jquery.flot.pie.js"></script>
+    <script src="../../assets/libs/flot/jquery.flot.time.js"></script>
+    <script src="../../assets/libs/flot/jquery.flot.stack.js"></script>
+    <script src="../../assets/libs/flot/jquery.flot.crosshair.js"></script>
+    <script src="../../assets/libs/flot.tooltip/js/jquery.flot.tooltip.min.js"></script>
+    <script src="../../dist/js/pages/chart/chart-page-init.js"></script>
 
-        /*colorpicker*/
-        $('.demo').each(function () {
-            //
-            // Dear reader, it's actually very easy to initialize MiniColors. For example:
-            //
-            //  $(selector).minicolors();
-            //
-            // The way I've done it below is just for the demo, so don't get confused
-            // by it. Also, data- attributes aren't supported at this time...they're
-            // only used for this demo.
-            //
-            $(this).minicolors({
-                control: $(this).attr('data-control') || 'hue',
-                position: $(this).attr('data-position') || 'bottom left',
-
-                change: function (value, opacity) {
-                    if (!value) return;
-                    if (opacity) value += ', ' + opacity;
-                    if (typeof console === 'object') {
-                        console.log(value);
-                    }
-                },
-                theme: 'bootstrap'
-            });
-
-        });
-        /*datwpicker*/
-        jQuery('.mydatepicker').datepicker();
-        jQuery('#datepicker-autoclose').datepicker({
-            autoclose: true,
-            todayHighlight: true
-        });
-        var quill = new Quill('#editor', {
-            theme: 'snow'
-        });
-
-    </script>
 </body>
 
 </html>

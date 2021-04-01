@@ -10,6 +10,7 @@ router.post(
   require("../controllers/operater/newTerminController")
 );
 
+
 function checkOperater(req, res, next) {
   let user = req.session.user;
   if (user) {

@@ -13,6 +13,8 @@ router.use("/savetnik", require("./savetnik"));
 
 router.use("/test", require("./test"));
 
+router.use("/punos", require("./punos"));
+
 router.use("/logout", require("./logout"));
 
 module.exports = router;

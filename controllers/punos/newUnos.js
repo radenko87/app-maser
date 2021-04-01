@@ -1,9 +1,9 @@
 const mongojs = require("mongojs");
-const db = mongojs("fullapp", ["termini"]);
+const db = mongojs("fullapp", ["popis1"]);
 
-const newTerminController = (req, res) => {
+const newUnosController = (req, res) => {
   let user = req.session.user;
-  db.termini.insert(
+  db.popis1.insert(
     {
       ime_stranke: req.body.ime_stranke,
       prezime_stranke: req.body.prezime_stranke,
@@ -17,23 +17,24 @@ const newTerminController = (req, res) => {
       datum_zakazivanja: req.body.datum_zakazivanja,
       vreme_termina: req.body.vreme_termina,
       savetnik: req.body.savetnik,
-      grad: req.body.grad,
+      gradovi: req.body.gradovi,
       deca: req.body.deca,
       operacije: req.body.operacije,
       terapija: req.body.terapija,
       napomena: req.body.napomena,
       vlasnistvo: req.body.vlasnistvo,
+      klasifikacija: req.body.klasifikacija,
       active: true,
       vrednost_ugovora: 0,
       razlog: "",
       ulaz: false,
-      proizvod: "",
+      proizvodi: req.body.proizvodi,
       operater: user.first_name + " " + user.last_name,
     },
     (err, docs) => {
-      res.redirect("/operater");
+      res.redirect("/punos");
     }
   );
 };
 
-module.exports = newTerminController;
+module.exports = newUnosController;

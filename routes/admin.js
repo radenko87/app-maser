@@ -20,6 +20,11 @@ router.get("/create/proizvod", (req, res) => {
   res.render("admin/createProizvod");
 });
 
+router.get("/create/vlasnistvo", (req, res) => {
+  res.render("admin/createVlasnistvo");
+});
+
+
 router.get(
   "/delete/user/:userId",
   require("../controllers/admin/deleteUserController")
@@ -37,10 +42,16 @@ router.get(
   require("../controllers/admin/deleteKlasifikacijaController")
 );
 
+router.get(
+  "/delete/vlasnistvo/:vlasnistvoId",
+  require("../controllers/admin/deleteVlasnistvoController")
+);
+
 router.post("/create/save", require("../controllers/admin/saveController"));
 
 router.post("/create/grad/save", require("../controllers/admin/createGrad"));
 router.post("/create/klasifikacija/save", require("../controllers/admin/createKlasifikacija"));
+router.post("/create/vlasnistvo/save", require("../controllers/admin/createVlasnistvo"));
 
 router.post(
   "/create/proizvod/save",

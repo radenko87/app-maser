@@ -28,6 +28,12 @@ const loginController = (req, res) => {
 
           } else if (user.role == "savetnik") {
             res.redirect("/savetnik");
+
+          } 
+
+          else if (user.role == "punos") {
+            res.redirect("/punos");
+
           }
            else {
             res.redirect("/");

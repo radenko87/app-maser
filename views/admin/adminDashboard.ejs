@@ -108,8 +108,9 @@
                             <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="/admin/create">Korisnika</a>
                                 <a class="dropdown-item" href="/admin/create/grad">Grad</a>
-                                <a class="dropdown-item" href="/admin/create/proizvod">Proizvod</a>
+                                <a class="dropdown-item" href="/admin/create/proizvod">Grupa resursa</a>
                                 <a class="dropdown-item" href="/admin/create/klasifikacija">Klasifikacija</a>
+                                <a class="dropdown-item" href="/admin/create/vlasnistvo">Vlasnistvo</a>
 
                             </div>
                         </li>
@@ -525,7 +526,7 @@
                         </div>
                         <div class="card">
                             <div class="card-body">
-                                <h4 class="card-title">Proizvodi</h4>
+                                <h4 class="card-title">Grupa resursa</h4>
                             </div>
                             <div class="comment-widgets scrollable">
                                 <!-- Comment Row -->
@@ -787,34 +788,10 @@
 
                     <div class="col-lg-6">
                         <!-- Card -->
+                
                         <div class="card">
                             <div class="card-body">
                                 <h4 class="card-title">Lokacija</h4>
-                            </div>
-                            <div class="comment-widgets scrollable">
-                                <!-- Comment Row -->
-                                <% for(let i=0;i<gradovi.length;i++) {%>
-                                <div class="d-flex flex-row comment-row m-t-0">
-                                    <div class="comment-text w-100">
-                                        <h6 class="font-medium">
-                                            <%= gradovi[i].name+" " %></h6>
-
-                                        <div class="comment-footer">
-                                            
-                                            <a href="/admin/savetnik/termini/<%= gradovi[i].name+" " %>"
-                                                type="button" class="btn btn-cyan btn-sm">Termini</a>
-                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
-                                            <button type="button" class="btn btn-danger btn-sm delete-user-btn"
-                                                data-id="<%= gradovi[i]._id %>">Delete</button>
-                                        </div>
-                                    </div>
-                                </div>
-                                <% } %>
-                            </div>
-                        </div>
-                        <div class="card">
-                            <div class="card-body">
-                                <h4 class="card-title">Gradovi</h4>
                             </div>
                             <div class="comment-widgets scrollable">
                                 <!-- Comment Row -->
@@ -852,6 +829,29 @@
                                             <button type="button" class="btn btn-success btn-sm">Publish</button>
                                             <button type="button" class="btn btn-danger btn-sm delete-gradovi-btn"
                                                 data-id="<%= klasifikacija[i]._id %>">Delete</button>
+                                        </div>
+                                    </div>
+                                </div>
+                                <% } %>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="card-body">
+                                <h4 class="card-title">Vlasnistvo nad imovinom</h4>
+                            </div>
+                            <div class="comment-widgets scrollable">
+                                <!-- Comment Row -->
+                                <% for(let i=0;i<vlasnistvo.length;i++) {%>
+                                <div class="d-flex flex-row comment-row m-t-0">
+                                    <div class="comment-text w-100">
+                                        <h6 class="font-medium"><%= vlasnistvo[i].name+" "+ vlasnistvo[i].role %></h6>
+
+                                        <div class="comment-footer">
+                                            
+                                            <button type="button" class="btn btn-cyan btn-sm">Edit</button>
+                                            <button type="button" class="btn btn-success btn-sm">Publish</button>
+                                            <button type="button" class="btn btn-danger btn-sm delete-gradovi-btn"
+                                                data-id="<%= vlasnistvo[i]._id %>">Delete</button>
                                         </div>
                                     </div>
                                 </div>
@@ -1245,6 +1245,20 @@
             if (potvrda) {
                 $.ajax({
                     url: `/admin/delete/klasifikacija/${id}`
+                })
+                    .then(res => {
+                        if (res == "Ok") {
+                            window.location.href = "/admin";
+                        }
+                    })
+            }
+        })
+        $(".delete-gradovi-btn").on('click', function () {
+            let id = $(this).attr('data-id'); // 587587587658
+            let potvrda = confirm("Da li ste sigurni ?");
+            if (potvrda) {
+                $.ajax({
+                    url: `/admin/delete/vlasnistvo/${id}`
                 })
                     .then(res => {
                         if (res == "Ok") {

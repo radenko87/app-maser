@@ -1,10 +1,10 @@
 const mongojs = require("mongojs");
-const db = mongojs("fullapp", ["termini"]);
+const db = mongojs("fullapp", ["popis1"]);
 
 const izvestajController = (req, res) => {
   let id = req.params.id;
 
-  db.termini.update(
+  db.popis1.update(
     { _id: mongojs.ObjectID(id) },
     {
       $set: {

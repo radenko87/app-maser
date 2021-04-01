@@ -290,7 +290,7 @@
                 <!-- ============================================================== -->
                 <div class="row">
                     <!-- Column -->
-                    <% if(termini.length == 0) {%>
+                    <% if(popis1.length == 0) {%>
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
                             <div class="box bg-cyan text-center">
@@ -303,16 +303,16 @@
                     </div>
 
                     <% } %>
-                    <% for(let i=0;i<termini.length;i++) {%>
+                    <% for(let i=0;i<popis1.length;i++) {%>
                     <div class="col-md-6 col-lg-2 col-xlg-3">
                         <div class="card card-hover">
-                            <a href="/savetnik/termin/<%= termini[i]._id %> ">
+                            <a href="/savetnik/termin/<%= popis1[i]._id %> ">
                                 <div class="box bg-cyan text-center">
                                     <h1 class="font-light text-white">
-                                        <%= termini[i].ime_stranke+" "+termini[i].prezime_stranke %>
+                                        <%= popis1[i].ime_stranke+" "+popis1[i].prezime_stranke %>
                                     </h1>
                                     <h6 class="text-white">
-                                        <%= termini[i].datum_zakazivanja + " "+termini[i].vreme_termina %>
+                                        <%= popis1[i].datum_zakazivanja + " "+popis1[i].vreme_termina %>
                                     </h6>
                                 </div>
                             </a>

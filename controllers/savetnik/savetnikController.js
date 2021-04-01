@@ -1,15 +1,15 @@
 const mongojs = require("mongojs");
-const db = mongojs("fullapp", ["termini"]);
+const db = mongojs("fullapp", ["popis1"]);
 
 const savetnikController = (req, res) => {
   let user = req.session.user;
 
-  db.termini.find(
+  db.popis1.find(
     { savetnik: user.first_name + " " + user.last_name, active: true },
-    (err, termini) => {
+    (err, popis1) => {
       res.render("savetnik/index", {
         name: user.first_name,
-        termini: termini,
+        popis1: popis1,
       });
     }
   );

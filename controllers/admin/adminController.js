@@ -1,11 +1,12 @@
 const mongojs = require("mongojs");
-const db = mongojs("fullapp", ["users", "gradovi", "proizvodi","klasifikacija"]);
+const db = mongojs("fullapp", ["users", "gradovi", "proizvodi","klasifikacija","vlasnistvo"]);
 
 const adminController = (req, res) => {
   let user = req.session.user;
   db.users.find({}, (err, users) => {
     db.proizvodi.find({}, (err, proizvodi) => {
       db.klasifikacija.find({}, (err,klasifikacija) => {
+        db.vlasnistvo.find({}, (err,vlasnistvo) => {
       db.gradovi.find({}, (err, gradovi) => {
         db.termini.find({ "active":false}, (err,termini) =>{
           db.termini.find({ "active":true}, (err,atermini) =>{
@@ -20,6 +21,7 @@ const adminController = (req, res) => {
           klasifikacija: klasifikacija,
           proizvodi: proizvodi,
           operateri: operateri,
+          vlasnistvo: vlasnistvo,
       
           savetnici: savetnici,
           brojusera: users.length,
@@ -35,6 +37,7 @@ const adminController = (req, res) => {
       });
     });
   });
+});
   
 });
 };
