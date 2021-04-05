@@ -9,8 +9,8 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="/assets/images/favicon.png">
-    <title>Matrix Template - The Ultimate Multipurpose admin template</title>
+    <link rel="icon" type="image/png" sizes="16x16" href="test">
+    <title>EuroExpress</title>
     <!-- Custom CSS -->
     <link rel="stylesheet" type="text/css" href="/assets/extra-libs/multicheck/multicheck.css">
     <link href="/assets/libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
@@ -49,14 +49,9 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="test">
                         <!-- Logo icon -->
-                        <b class="logo-icon p-l-10">
-                            <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
-                            <!-- Dark Logo icon -->
-                            <img src="/assets/images/logo-icon.png" alt="homepage" class="light-logo" />
-
-                        </b>
+                        
                         <!--End Logo icon -->
                         <!-- Logo text -->
                         <span class="logo-text">
@@ -242,7 +237,7 @@
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav" class="p-t-30">
                         <li class="sidebar-item"> <a class="sidebar-link waves-effect waves-dark sidebar-link"
-                                href="/unos" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
+                                href="/test" aria-expanded="false"><i class="mdi mdi-view-dashboard"></i><span
                                     class="hide-menu">Dashboard</span></a></li>
                         
                             </ul>
@@ -303,13 +298,14 @@
                                         <thead>
                                             <tr>
                                                 <th>Naziv</th>
+                                                <th>Inventurni Broj</th>
                                                 <th>Nivo klasifikacije</th>
                                                 <th>Vlasnistvo</th>
                                                 <th>Grupa resursa</th>
                                                 <th>Lokacija</th>
                                                 <th>Datum/Vreme</th>
                                                 <th>Status</th>
-                                                <th>Operater</th>
+                                                <th>Evidentirao</th>
                                                 <th>Napomena</th>
                                                 
                                                 <th>Vise</th>
@@ -319,10 +315,11 @@
                                             <% for(let i=0;i<popis1.length;i++) { %>
                                             <tr>
                                                 <td><%= popis1[i].ime_stranke+" "+popis1[i].prezime_stranke %></td>
+                                                <td><%= popis1[i].godiste_stranke %></td>
                                                 <td><%= popis1[i].klasifikacija %></td>
                                                 <td><%= popis1[i].vlasnistvo %></td>
                                                 <td><%= popis1[i].proizvodi %></td>
-                                                <td><%= popis1[i].gradovi %></td>
+                                                <td><%= popis1[i].grad %></td>
                                                 <td><%= popis1[i].datum_zakazivanja+" "+popis1[i].vreme_termina %></td>
                                                 <td>
                                                     <% if(popis1[i].active) {%>
@@ -366,10 +363,7 @@
             <!-- ============================================================== -->
             <!-- footer -->
             <!-- ============================================================== -->
-            <footer class="footer text-center">
-                All Rights Reserved by Matrix-admin. Designed and Developed by <a
-                    href="https://wrappixel.com">WrapPixel</a>.
-            </footer>
+           
             <!-- ============================================================== -->
             <!-- End footer -->
             <!-- ============================================================== -->

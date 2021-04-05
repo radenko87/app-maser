@@ -49,7 +49,7 @@
                     <!-- ============================================================== -->
                     <!-- Logo -->
                     <!-- ============================================================== -->
-                    <a class="navbar-brand" href="index.html">
+                    <a class="navbar-brand" href="/savetnik">
                         <!-- Logo icon -->
                         <b class="logo-icon p-l-10">
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
@@ -309,35 +309,35 @@
                             </div>
                             <ul class="list-group">
                                 <li class="list-group-item">
-                                    Stranka: <button class="btn btn-sm btn-info form-control">
+                                    Naziv: <button class="btn btn-sm btn-info form-control">
                                         <%= termin.ime_stranke+" "+termin.prezime_stranke %>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
-                                    Godiste: <button class="btn btn-sm btn-info form-control">
+                                    Inventurni broj: <button class="btn btn-sm btn-info form-control">
                                         <%= termin.godiste_stranke %>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
-                                    Fiksni: <button class="btn btn-sm btn-info form-control">
-                                        <%= termin.fiksni_telefon %>
+                                    Nivo klasifikacije <button class="btn btn-sm btn-info form-control">
+                                        <%= termin.klasifikacija %>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
-                                    Mobilni: <button class="btn btn-sm btn-info form-control">
-                                        <%= termin.mobilni_telefon %>
+                                    Grupa resursa <button class="btn btn-sm btn-info form-control">
+                                        <%= termin.proizvodi %>
                                     </button>
                                 </li>
                                 <li class="list-group-item">
-                                    Adresa: <button class="btn btn-sm btn-info form-control">
-                                        <%= termin.adresa %>
+                                    Napomena: <button class="btn btn-sm btn-info form-control">
+                                        <%= termin.napomena %>
                                     </button>
                                 </li>
                             </ul>
                             <div class="card-footer">
                                 <form action="/savetnik/izvestaj/<%= termin._id %>" method="POST">
                                     <button type="submit" class="btn btn-danger form-control">
-                                        Zatvori termin
+                                        Promjeni status 
                                     </button>
                                 </form>
                             </div>

@@ -17,7 +17,7 @@ const newUnosController = (req, res) => {
       datum_zakazivanja: req.body.datum_zakazivanja,
       vreme_termina: req.body.vreme_termina,
       savetnik: req.body.savetnik,
-      gradovi: req.body.gradovi,
+      grad: req.body.grad,
       deca: req.body.deca,
       operacije: req.body.operacije,
       terapija: req.body.terapija,
